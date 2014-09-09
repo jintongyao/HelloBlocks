@@ -1,0 +1,286 @@
+//
+//  MainScene.cpp
+//  HelloBlocks
+//
+//  Created by JinTongyao on 8/27/14.
+//
+//
+
+#include "ArcadeScene.h"
+
+ArcadeScene::ArcadeScene() {}
+
+ArcadeScene::~ArcadeScene() {}
+
+bool ArcadeScene::init() {
+    if (!Scene::init() ) {
+        return false;
+    }
+    
+    //create background layer and front layer
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    //PINK
+//    auto *arcadeLayer = LayerColor::create(Color4B(234, 97, 137, 255));//set background color of the layer
+//    frontLayer = LayerColor::create(Color4B(163, 20, 71, 150));//set front color
+    //GRAY
+//    auto *arcadeLayer = LayerColor::create(Color4B(194, 194, 194, 255));//set background color of the layer
+//    frontLayer = LayerColor::create(Color4B(169, 170, 170, 255));//set front color
+    //BLUE
+//    auto *arcadeLayer = LayerColor::create(Color4B(20, 142, 204, 255));//set background color of the layer
+//    frontLayer = LayerColor::create(Color4B(85, 169, 212, 255));//set front color
+    
+    //JELLY
+    auto *arcadeLayer = LayerColor::create(Color4B(90, 191, 188, 255));//set background color of the layer
+    frontLayer = LayerColor::create(Color4B(78, 165, 163, 255));//set front color
+    
+    //DARK
+//    auto *arcadeLayer = LayerColor::create(Color4B(50, 50, 50, 255));//set background color of the layer
+//    frontLayer = LayerColor::create(Color4B(100, 100, 100, 255));//set front color
+    
+    float frontHeight = visibleSize.height;
+    float line = frontHeight / VERTICAL_BLOCK_NUM;
+    float frontWidth = line * HORIZONTAL_BLOCK_NUM;
+    frontLayer->setContentSize(Size(frontWidth, frontHeight));
+    frontLayer->setPosition(visibleSize.width - 5 * line, 0);
+    arcadeLayer->addChild(frontLayer);
+    
+    //create blocks
+    srand((unsigned)time(NULL));//add random seed
+    for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
+        for (int j = 0; j < INITED_BLOCK_HEIGHT; j++) {
+            int randomInt = rand() % COLOR_NUM;
+            BlockSprite *block = BlockSprite::createBlock(randomInt, theme::JELLY, line, line, line * i, line * j);
+            block->setPosX(i);
+            block->setPosY(j);
+            block->setRanColor(randomInt);
+            blocks[i][j] = block;
+            frontLayer->addChild(blocks[i][j]);
+        }
+    }
+    
+    //add event listener
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->onTouchBegan = CC_CALLBACK_2(ArcadeScene::onTouchBegan, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
+    this->addChild(arcadeLayer);
+    return true;
+}
+
+/**
+ * when touch began,execute these methods
+ * Touch *touch
+ * Event *event
+ **/
+bool ArcadeScene::onTouchBegan(Touch *touch, Event *event) {
+    //get touched block
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point touchPoint = touch->getLocation();
+    BlockSprite *aBlock = this->getBlockSprite(visibleSize, touchPoint);
+    
+    if (aBlock != NULL) {
+        //get and clear relative blocks
+        getRelativeBlocks(aBlock);
+        for (Vector<BlockSprite*>::iterator iter = clearBlockCache.begin(),iterEnd = clearBlockCache.end(); iter != iterEnd; iter++) {
+            BlockSprite *tmpBlock = *iter;
+            removeBlock(tmpBlock);
+            blocks[tmpBlock->getPosX()][tmpBlock->getPosY()] = NULL;
+        }
+        clearBlockCache.clear();
+        
+        //let blocks fall
+        schedule(schedule_selector(ArcadeScene::fallBlock), 1, 0, 0.4);
+        
+        //move upward
+        schedule(schedule_selector(ArcadeScene::upBlock), 1, 0, 0.4);
+        
+    }
+    return true;
+}
+
+/**
+ * get seleceted blocks
+ * Size size
+ * Point touchPoint
+ **/
+BlockSprite* ArcadeScene::getBlockSprite(Size size, Point touchPoint) {
+    float blockLine = size.height / VERTICAL_BLOCK_NUM;
+    if ((touchPoint.x > (size.width - (HORIZONTAL_BLOCK_NUM + 1) * blockLine)) && (touchPoint.x < ((size.width - blockLine)))) {
+        int posX = getXPosFromArray(touchPoint, size);
+        int posY = getYPosFromArray(touchPoint, size);
+//        log("the x is %i and y is %i", i ,j);
+        return blocks[posX][posY];
+    }else {
+        return NULL;
+    }
+}
+
+/**
+ * clear all blocks of the origin block
+ * BlockSprite *originBlock
+ * BlockSprite *relativeBlock
+ **/
+void ArcadeScene::getRelativeBlocks(BlockSprite *relativeBlock) {
+    if (clearBlockCache.contains(relativeBlock)) {
+        return;
+    }
+    clearBlockCache.pushBack(relativeBlock);
+    
+    int posX = relativeBlock->getPosX();
+    int posY = relativeBlock->getPosY();
+    int ranColor = relativeBlock->getRanColor();
+    
+    //top
+    if (posY < (VERTICAL_BLOCK_NUM - 1) && blocks[posX][posY + 1] != NULL) {
+        if (blocks[posX][posY + 1]->getRanColor() == ranColor) {
+            getRelativeBlocks(blocks[posX][posY + 1]);
+        }
+    }
+    //bottom
+    if (posY > 0  && blocks[posX][posY - 1] != NULL) {
+        if (blocks[posX][posY - 1]->getRanColor() == ranColor) {
+            getRelativeBlocks(blocks[posX][posY - 1]);
+        }
+    }
+    //left
+    if (posX > 0  && blocks[posX - 1][posY] != NULL) {
+        if (blocks[posX - 1][posY]->getRanColor() == ranColor) {
+            getRelativeBlocks(blocks[posX - 1][posY]);
+        }
+    }
+    //right
+    if (posX < (HORIZONTAL_BLOCK_NUM - 1)  && blocks[posX + 1][posY] != NULL) {
+        if (blocks[posX + 1][posY]->getRanColor() == ranColor) {
+            getRelativeBlocks(blocks[posX + 1][posY]);
+        }
+    }
+}
+
+/**
+ * remove the block
+ * BlockSprite *block
+ **/
+void ArcadeScene::removeBlock(BlockSprite *block) {
+    auto removeBlockPhyAction = CallFunc::create(CC_CALLBACK_0(ArcadeScene::removeBlockPhyCallback,this, block));
+//    block->getBlockBackgroundLayer()->runAction(Sequence::create(Spawn::create(RotateBy::create(0.4, 360), MoveTo::create(0.4, Point(block->getPosX(), -200)), NULL), removeBlockPhyAction, NULL));//移除动作序列
+//    block->getBlockBackgroundLayer()->runAction(Sequence::create(Spawn::create(RotateBy::create(0.2, 360), ScaleBy::create(0.2, 0.5, 0.5), NULL), removeBlockPhyAction, NULL));//移除动作序列
+    block->getBlockBackgroundLayer()->runAction(Sequence::create(Spawn::create(FadeOut::create(0.4), NULL), removeBlockPhyAction, NULL));//移除动作序列
+//    this->frontLayer->removeChild(block);
+}
+
+/**
+ * remove block from layer
+ * BlockSprite *block
+ **/
+void ArcadeScene::removeBlockPhyCallback(BlockSprite *block) {
+    this->frontLayer->removeChild(block);
+}
+
+/**
+ * let blocks fall
+ **/
+void ArcadeScene::fallBlock(float dt) {
+    Size size = Director::getInstance()->getVisibleSize();
+    for (int x = 0; x < HORIZONTAL_BLOCK_NUM; x++) {
+        //1.一列列进行遍历
+        for (int y = 0; y < VERTICAL_BLOCK_NUM; y++) {
+            //2.找到最下方的空格
+            if (blocks[x][y] == NULL) {
+                BlockSprite *aboveBlock = checkHasBlocksAbove(x, y);//3.查看空格上方是否还有非空格
+                if (aboveBlock != NULL) {
+                    //4.将空格上方的元素下移n个位置
+                    int moveStep = aboveBlock->getPosY() - y;
+                    aboveBlock->runAction(MoveBy::create(0.0001, Point(0, -(moveStep *(size.height / VERTICAL_BLOCK_NUM)))));
+                    //5.更新block数据与数组数据
+                    int originAboveX = aboveBlock->getPosX();
+                    int originAboveY = aboveBlock->getPosY();
+                    blocks[x][y] = aboveBlock;
+                    aboveBlock->setPosX(x);
+                    aboveBlock->setPosY(y);
+                    blocks[originAboveX][originAboveY] = NULL;
+                }
+            }
+        }
+    }
+    //array test method
+//    for (int j = VERTICAL_BLOCK_NUM - 1; j >= 0; j--) {
+//        printf("\n");
+//        for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
+//            if(blocks[i][j] != NULL) {
+//                printf("[%i , %i] ", blocks[i][j]->getPosX(), blocks[i][j]->getPosY());
+//            }else {
+//                printf("[    ] ");
+//            }
+//        }
+//    }
+}
+
+/**
+ * search blocks above this block
+ **/
+BlockSprite* ArcadeScene::checkHasBlocksAbove(int x, int y) {
+    for (int j = y; j < VERTICAL_BLOCK_NUM; j++) {
+        if (blocks[x][j] != NULL) {
+            return blocks[x][j];
+        }
+    }
+    return NULL;
+}
+
+void ArcadeScene::upBlock(float dt) {
+    Size size = Director::getInstance()->getVisibleSize();
+    float line = size.height / VERTICAL_BLOCK_NUM;
+    
+    //检测游戏是否game over
+    for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
+        if (blocks[i][VERTICAL_BLOCK_NUM - 1] != NULL) {
+            back2Welcome();
+        }
+    }
+    
+    //原有方块全体上移1行
+    for (int j = VERTICAL_BLOCK_NUM - 2; j >= 0; j--) {
+        for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
+            if(blocks[i][j] != NULL) {
+                blocks[i][j]->setPosY(j+1);
+                blocks[i][j]->runAction(MoveBy::create(0.05, Point(0, size.height / VERTICAL_BLOCK_NUM)));
+                blocks[i][j+1] = blocks[i][j];
+                blocks[i][j] = NULL;
+            }
+        }
+    }
+    
+    //生成4个方块
+    srand((unsigned)time(NULL));//add random seed
+    for (int k = 0; k < HORIZONTAL_BLOCK_NUM; k++) {
+        int randomInt = rand() % COLOR_NUM;
+        BlockSprite *block = BlockSprite::createBlock(0, theme::JELLY, line, line, line * k, 0);
+        block->setPosX(k);
+        block->setPosY(0);
+        block->setRanColor(randomInt);
+        blocks[k][0] = block;
+        frontLayer->addChild(block);
+    }
+}
+
+void ArcadeScene::back2Welcome() {
+    auto scene = WelcomeScene::create();
+    TransitionCrossFade *transition = TransitionCrossFade::create(1, scene);
+    Director::getInstance()->replaceScene(transition);
+}
+
+
+/**
+ * 获取当前点击位置在block数组中的x坐标
+ **/
+int ArcadeScene::getXPosFromArray(Point touchPoint, Size size) {
+    float blockLine = (size.height / VERTICAL_BLOCK_NUM);
+    //touchPoint.x - (height / VERTICAL_BLOCK_NUM)横坐标减去左边空白部分
+    //(height / VERTICAL_BLOCK_NUM)每个block的边长
+    return (int)(touchPoint.x - (size.width - (HORIZONTAL_BLOCK_NUM + 1) * blockLine)) / blockLine;
+}
+
+//获取当前点击位置在block数组中的y坐标
+int ArcadeScene::getYPosFromArray(Point touchPoint, Size size) {
+    return (int)(touchPoint.y / (size.height / VERTICAL_BLOCK_NUM));
+}
