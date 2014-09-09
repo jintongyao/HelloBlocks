@@ -27,11 +27,14 @@ typedef enum {
     WHITE
 } theme;
 
+/**
+ *  class MyColor
+ *  define the colors in this game
+ */
 class MyColor {
 public:
     MyColor(theme themeName, int colorNum);
     void setColorRgb(theme themeName, int colorNum);
-    
     theme getThemeName();
     void setThemeName(theme themeName);
     GLubyte getRed();
