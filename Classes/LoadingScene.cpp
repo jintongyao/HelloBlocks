@@ -26,6 +26,7 @@ void LoadingScene::onEnter() {
     background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
     this->addChild(background);
     
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("solo.ogg");
     Director::getInstance()->getTextureCache()->addImageAsync("atlas.png", CC_CALLBACK_1(LoadingScene::loadingCallBack, this));
 }
 

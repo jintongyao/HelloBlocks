@@ -11,21 +11,23 @@
 using namespace cocos2d;
 using namespace std;
 
-//定义Atlas结构体
+/**
+ *  define the Atlas struct
+ */
 typedef struct _atlas{
-    char name[255];//名称
-    int width;//宽度
-    int height;//高度
-    Point start;//起始坐标
-    Point end;//结束坐标
+    char name[255];
+    int width;
+    int height;
+    Point start;
+    Point end;
 } Atlas;
 
 class AtlasLoader {
 public:
-    static AtlasLoader* getInstance();//设定为单态类
-    static void destroyInstance();//对象销毁
-    void loadAtlas(string fileName);//从文件中读取背景图片
-    void loadAtlas(string filename, cocos2d::Texture2D *texture);//
+    static AtlasLoader* getInstance();//singleton
+    static void destroyInstance();
+    void loadAtlas(string fileName);
+    void loadAtlas(string filename, cocos2d::Texture2D *texture);
     SpriteFrame* getSpriteFrameByName(string name);
     
 protected:
@@ -35,4 +37,5 @@ protected:
     
 private:
     AtlasLoader();
+    
 };

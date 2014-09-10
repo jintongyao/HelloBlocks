@@ -10,8 +10,10 @@
 #include "cocos2d.h"
 #include "WelcomeScene.h"
 #include "AtlasLoader.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 class LoadingScene : public Scene {
 public:

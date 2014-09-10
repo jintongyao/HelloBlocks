@@ -42,6 +42,9 @@ bool ArcadeScene::init() {
     frontLayer->setPosition(visibleSize.width - 5 * line, 0);
     arcadeLayer->addChild(frontLayer);
     
+    //play background music
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("solo.wav");
+    
     //create blocks
     srand((unsigned)time(NULL));//add random seed
     for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
@@ -251,7 +254,7 @@ void ArcadeScene::upBlock(float dt) {
     srand((unsigned)time(NULL));//add random seed
     for (int k = 0; k < HORIZONTAL_BLOCK_NUM; k++) {
         int randomInt = rand() % COLOR_NUM;
-        BlockSprite *block = BlockSprite::createBlock(0, theme::JELLY, line, line, line * k, 0);
+        BlockSprite *block = BlockSprite::createBlock(randomInt, theme::JELLY, line, line, line * k, 0);
         block->setPosX(k);
         block->setPosY(0);
         block->setRanColor(randomInt);

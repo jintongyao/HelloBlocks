@@ -1,10 +1,9 @@
 //
 //  AtlasLoader.cpp
-//  MyBird
 //
 //  Created by JinTongyao on 8/21/14.
 //
-//
+
 #include "AtlasLoader.h"
 
 using namespace cocos2d;
@@ -25,17 +24,21 @@ void AtlasLoader::destroyInstance() {
 }
 
 /**
- * string filename 素材布局文件的名称
- **/
+ *  load resources
+ *
+ *  @param fileName
+ */
 void AtlasLoader::loadAtlas(string fileName) {
     auto textureAtlas = Director::getInstance()->getTextureCache()->addImage("atlas.png");
     this->loadAtlas(fileName, textureAtlas);
 }
 
 /**
- * string filename 素材布局文件的名称
- * Texture2D *texture 素材文件
- **/
+ *  load the texture by the config file
+ *
+ *  @param filename
+ *  @param texture
+ */
 void AtlasLoader::loadAtlas(std::string filename, Texture2D *texture) {
     string data = FileUtils::getInstance()->getStringFromFile(filename);//读取素材布局文件
     unsigned pos;
@@ -62,11 +65,18 @@ void AtlasLoader::loadAtlas(std::string filename, Texture2D *texture) {
     }
 }
 
+/**
+ *  get sprite frame by name
+ *
+ *  @param name
+ *  @return     SpriteFrame
+ */
+SpriteFrame* AtlasLoader::getSpriteFrameByName(string name){
+    return this->_spriteFrames.at(name);
+}
+
 bool AtlasLoader::init(){
     return true;
 }
 
-SpriteFrame* AtlasLoader::getSpriteFrameByName(string name){
-    return this->_spriteFrames.at(name);
-}
 

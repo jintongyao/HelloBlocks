@@ -36,7 +36,7 @@ private:
 
     int getXPosFromArray(Point touchPoint, Size size);
     int getYPosFromArray(Point touchPoint, Size size);
-    void getRelativeBlocks(BlockSprite *relativeBlock);//清除关联的block
+    void getRelativeBlocks(BlockSprite *relativeBlock);
     
     void removeBlock(BlockSprite *block);
     void removeBlockPhyCallback(BlockSprite *block);

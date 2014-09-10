@@ -63,6 +63,7 @@ bool WelcomeLayer::init() {
     return true;
 }
 
+
 void WelcomeLayer::menuStartCallback(Object *sender) {
     auto scene = ArcadeScene::create();
     TransitionTurnOffTiles *transition = TransitionTurnOffTiles::create(1, scene);

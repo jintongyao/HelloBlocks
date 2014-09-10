@@ -10,8 +10,10 @@
 #include "AtlasLoader.h"
 #include "ArcadeScene.h"
 #include "TitleBorder.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 class WelcomeLayer : public Layer {
 public:
