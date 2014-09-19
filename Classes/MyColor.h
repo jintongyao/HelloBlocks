@@ -4,7 +4,7 @@
 //  define the class in order to store colors in this game
 //  Created by JinTongyao on 9/5/14.
 //
-
+#pragma once
 #include <stdio.h>
 #include "cocos2d.h"
 

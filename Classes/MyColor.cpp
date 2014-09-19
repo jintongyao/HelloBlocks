@@ -17,7 +17,7 @@ MyColor::MyColor(theme themeName, int colorNum) {
 //set the rgb by theme name & random number
 void MyColor::setColorRgb(theme themeName, int colorNum) {
     switch (themeName) {
-        case theme::PURPLE:
+        case PURPLE:
             switch (colorNum) {
                 case 0:
                     setRed(167);
@@ -51,7 +51,7 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     break;
             }
             break;
-        case theme::DARK:
+        case DARK:
             switch (colorNum) {
                 case 0:
                     setRed(255);
@@ -84,7 +84,8 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     setBlue(131);
                     break;
             }
-        case theme::GRAY:
+            break;
+        case GRAY:
             switch (colorNum) {
                 case 0:
                     setRed(230);
@@ -117,7 +118,8 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     setBlue(202);
                     break;
             }
-        case theme::BLUE:
+            break;
+        case BLUE:
             switch (colorNum) {
                 case 0:
                     setRed(6);
@@ -150,7 +152,8 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     setBlue(202);
                     break;
             }
-        case theme::PINK:
+            break;
+        case PINK:
             switch (colorNum) {
                 case 0:
                     setRed(254);
@@ -183,7 +186,8 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     setBlue(114);
                     break;
             }
-        case theme::JELLY:
+            break;
+        case JELLY:
             switch (colorNum) {
                 case 0:
                     setRed(235);
@@ -216,6 +220,7 @@ void MyColor::setColorRgb(theme themeName, int colorNum) {
                     setBlue(114);
                     break;
             }
+            break;
         default:
             break;
     }

@@ -9,8 +9,8 @@
 #include "cocos2d.h"
 #include "AtlasLoader.h"
 #include "ArcadeScene.h"
-#include "TitleBorder.h"
 #include "SimpleAudioEngine.h"
+#include "Settings.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -21,7 +21,10 @@ public:
     ~WelcomeLayer();
     virtual bool init();
     CREATE_FUNC(WelcomeLayer);
+    LayerColor *backgroundLayer;
     
 private:
-    void menuStartCallback(Object *sender);
+    void menuNormalModeCallback(Object *sender);
+    LayerColor *colorBlock1;
+    MenuItemLabel *labelItem1;
 };

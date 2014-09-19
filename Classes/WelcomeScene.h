@@ -5,7 +5,6 @@
 //  Created by JinTongyao on 8/27/14.
 //
 //
-
 #pragma once
 #include "WelcomeLayer.h"
 #include "cocos2d.h"
