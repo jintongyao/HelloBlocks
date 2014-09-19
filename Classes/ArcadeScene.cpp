@@ -19,6 +19,33 @@ bool ArcadeScene::init() {
     
     //create background layer and front layer
     Size visibleSize = Director::getInstance()->getVisibleSize();
+    
+    switch (userTheme) {
+        case PINK:
+            arcadeLayer = LayerColor::create(Color4B(234, 97, 137, 255));
+            frontLayer = LayerColor::create(Color4B(163, 20, 71, 150));
+            break;
+        case GRAY:
+            arcadeLayer = LayerColor::create(Color4B(194, 194, 194, 255));
+            frontLayer = LayerColor::create(Color4B(169, 170, 170, 255));
+            break;
+        case BLUE:
+            arcadeLayer = LayerColor::create(Color4B(20, 142, 204, 255));
+            frontLayer = LayerColor::create(Color4B(85, 169, 212, 255));
+            break;
+        case JELLY:
+            arcadeLayer = LayerColor::create(Color4B(90, 191, 188, 255));
+            frontLayer = LayerColor::create(Color4B(78, 165, 163, 255));
+            break;
+        case DARK:
+            arcadeLayer = LayerColor::create(Color4B(50, 50, 50, 255));
+            frontLayer = LayerColor::create(Color4B(100, 100, 100, 255));
+            break;
+        default:
+            arcadeLayer = LayerColor::create(Color4B(20, 142, 204, 255));
+            frontLayer = LayerColor::create(Color4B(85, 169, 212, 255));
+            break;
+    }
     //PINK
 //    auto *arcadeLayer = LayerColor::create(Color4B(234, 97, 137, 255));//set background color of the layer
 //    frontLayer = LayerColor::create(Color4B(163, 20, 71, 150));//set front color
@@ -29,8 +56,8 @@ bool ArcadeScene::init() {
 //    auto *arcadeLayer = LayerColor::create(Color4B(20, 142, 204, 255));//set background color of the layer
 //    frontLayer = LayerColor::create(Color4B(85, 169, 212, 255));//set front color
     //JELLY
-    auto *arcadeLayer = LayerColor::create(Color4B(90, 191, 188, 255));//set background color of the layer
-    frontLayer = LayerColor::create(Color4B(78, 165, 163, 255));//set front color
+//auto *arcadeLayer = LayerColor::create(Color4B(90, 191, 188, 255));//set background color of the layer
+//frontLayer = LayerColor::create(Color4B(78, 165, 163, 255));//set front color
     //DARK
 //    auto *arcadeLayer = LayerColor::create(Color4B(50, 50, 50, 255));//set background color of the layer
 //    frontLayer = LayerColor::create(Color4B(100, 100, 100, 255));//set front color
@@ -43,14 +70,14 @@ bool ArcadeScene::init() {
     arcadeLayer->addChild(frontLayer);
     
     //play background music
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("solo.wav");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("solo.wav", true);
     
     //create blocks
     srand((unsigned)time(NULL));//add random seed
     for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
         for (int j = 0; j < INITED_BLOCK_HEIGHT; j++) {
             int randomInt = rand() % COLOR_NUM;
-            BlockSprite *block = BlockSprite::createBlock(randomInt, theme::JELLY, line, line, line * i, line * j);
+            BlockSprite *block = BlockSprite::createBlock(randomInt, userTheme, line, line, line * i, line * j);
             block->setPosX(i);
             block->setPosY(j);
             block->setRanColor(randomInt);
@@ -254,7 +281,7 @@ void ArcadeScene::upBlock(float dt) {
     srand((unsigned)time(NULL));//add random seed
     for (int k = 0; k < HORIZONTAL_BLOCK_NUM; k++) {
         int randomInt = rand() % COLOR_NUM;
-        BlockSprite *block = BlockSprite::createBlock(randomInt, theme::JELLY, line, line, line * k, 0);
+        BlockSprite *block = BlockSprite::createBlock(randomInt, userTheme, line, line, line * k, 0);
         block->setPosX(k);
         block->setPosY(0);
         block->setRanColor(randomInt);

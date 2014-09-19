@@ -7,6 +7,7 @@
 //
 #pragma once
 #include "cocos2d.h"
+#include "Settings.h"
 #include "BlockSprite.h"
 #include "WelcomeScene.h"
 
@@ -17,6 +18,7 @@ const int HORIZONTAL_BLOCK_NUM = 4;
 const int COLOR_NUM = 4;
 const int INITED_BLOCK_HEIGHT = 4;
 
+extern theme userTheme;
 class ArcadeScene : public Scene {
 public:
     ArcadeScene();
@@ -30,6 +32,7 @@ private:
     bool gameoverFlag = false;
     
     LayerColor *frontLayer;
+    LayerColor *arcadeLayer;
     BlockSprite* getBlockSprite(Size size, Point touchPoint);
     BlockSprite *blocks[4][12] = {0};
     Vector<BlockSprite*> clearBlockCache;
