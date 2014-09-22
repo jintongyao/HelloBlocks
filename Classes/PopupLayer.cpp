@@ -18,8 +18,7 @@ bool PopupLayer::init() {
     }
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    
-    //front layer
+    //set menu layer properties
     switch (userTheme) {
         case PINK:
             menuLayer = LayerColor::create(Color4B(234, 97, 137, 255));
@@ -45,33 +44,33 @@ bool PopupLayer::init() {
     menuLayer->setAnchorPoint(Point(0.5, 0.5));
     menuLayer->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
     
+    //add label "suspend"
+    Label *suspendLabel = Label::create("suspend", "Afonts/Marker Felt.ttf", 30);
+    suspendLabel->setPosition(Point(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2 + 50));
+
+    
     //add menus icons
-    Sprite *homeButton = Sprite::create("home-1.png");
-    Sprite *activeHomeButton = Sprite::create("home-1.png");
+    Sprite *homeButton = Sprite::create("home.png");
+    Sprite *activeHomeButton = Sprite::create("home.png");
     activeHomeButton->setPositionY(5);
     auto homeMenuItem  = MenuItemSprite::create(homeButton, activeHomeButton, NULL, CC_CALLBACK_1(PopupLayer::homeCallBack, this));
-    homeMenuItem->setPosition(menuLayer->getContentSize().width / 2 - 100, menuLayer->getContentSize().height / 2);
-    auto homeMenu = Menu::create(homeMenuItem,NULL);
-    homeMenu->setPosition(Point(0 ,0));
-    menuLayer->addChild(homeMenu);
-    
+    homeMenuItem->setPosition(menuLayer->getContentSize().width / 2 - 100, menuLayer->getContentSize().height / 2 - 30);
+    auto homeMenu = Menu::create(homeMenuItem, NULL);
+    homeMenu->setPosition(Point(0, 0));
     Sprite *resumeButton = Sprite::create("start.png");
     Sprite *activeResumeButton = Sprite::create("start.png");
     activeResumeButton->setPositionY(5);
     auto resumeMenuItem  = MenuItemSprite::create(resumeButton, activeResumeButton, NULL, CC_CALLBACK_1(PopupLayer::resumeCallBack, this));
-    resumeMenuItem->setPosition(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2);
-    auto resumeMenu = Menu::create(resumeMenuItem,NULL);
-    resumeMenu->setPosition(Point(0 ,0));
-    menuLayer->addChild(resumeMenu);
-    
+    resumeMenuItem->setPosition(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2 - 30);
+    auto resumeMenu = Menu::create(resumeMenuItem, NULL);
+    resumeMenu->setPosition(Point(0, 0));
     Sprite *restartButton = Sprite::create("restart.png");
     Sprite *activeRestartButton = Sprite::create("restart.png");
     activeRestartButton->setPositionY(5);
-    auto restartMenuItem  = MenuItemSprite::create(restartButton, activeRestartButton, NULL, CC_CALLBACK_1(PopupLayer::homeCallBack, this));
-    restartMenuItem->setPosition(menuLayer->getContentSize().width / 2 + 100, menuLayer->getContentSize().height / 2);
-    auto restartMenu = Menu::create(restartMenuItem,NULL);
-    restartMenu->setPosition(Point(0 ,0));
-    menuLayer->addChild(restartMenu);
+    auto restartMenuItem  = MenuItemSprite::create(restartButton, activeRestartButton, NULL, CC_CALLBACK_1(PopupLayer::restartCallBack, this));
+    restartMenuItem->setPosition(menuLayer->getContentSize().width / 2 + 100, menuLayer->getContentSize().height / 2 - 30);
+    auto restartMenu = Menu::create(restartMenuItem, NULL);
+    restartMenu->setPosition(Point(0, 0));
     
     //add shadow for menuLayer
     auto *shadowLayer = LayerColor::create(Color4B(100, 100, 100, 100));
@@ -80,13 +79,20 @@ bool PopupLayer::init() {
     shadowLayer->setAnchorPoint(Point(0.5, 0.5));
     shadowLayer->setPosition(Point(visibleSize.width / 2 + 8, visibleSize.height / 2 - 8));
     
+    menuLayer->addChild(suspendLabel);
+    menuLayer->addChild(homeMenu);
+    menuLayer->addChild(resumeMenu);
+    menuLayer->addChild(restartMenu);
+    
     this->addChild(shadowLayer);
     this->addChild(menuLayer);
     
+    //swallow touch
     auto callback = [](Touch * ,Event *) {
         return true;
     };
     
+    //add event listener
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = callback;
     listener->setSwallowTouches(true);
@@ -114,4 +120,14 @@ void PopupLayer::homeCallBack(Object *sender) {
  */
 void PopupLayer::resumeCallBack(Object *sender) {
     this->removeFromParentAndCleanup(true);
+}
+
+/**
+ *  restart the game
+ *  @param sender
+ */
+void PopupLayer::restartCallBack(Object *sender) {
+    auto normalModeScene = NormalModeScene::create();
+    TransitionSplitRows *transition = TransitionSplitRows::create(1, normalModeScene);
+    Director::getInstance()->replaceScene(transition);
 }
