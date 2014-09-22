@@ -11,6 +11,8 @@
 #include "Settings.h"
 #include "BlockSprite.h"
 #include "WelcomeScene.h"
+#include "PopupLayer.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 

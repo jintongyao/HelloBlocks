@@ -8,6 +8,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "AtlasLoader.h"
+#include "NormalModeScene.h"
 #include "ArcadeScene.h"
 #include "SimpleAudioEngine.h"
 #include "Settings.h"
@@ -27,4 +28,10 @@ private:
     void menuNormalModeCallback(Object *sender);
     LayerColor *colorBlock1;
     MenuItemLabel *labelItem1;
+    LayerColor *colorBlock2;
+    MenuItemLabel *labelItem2;
+    LayerColor *colorBlock3;
+    MenuItemLabel *labelItem3;
+    LayerColor *colorBlock4;
+    MenuItemLabel *labelItem4;
 };

@@ -57,10 +57,9 @@ bool NormalModeScene::init() {
     frontLayer->setPosition(visibleSize.width - 5 * line, 0);
     normalModeLayer->addChild(frontLayer);
     
-    //Start button
-//    Sprite *startButton = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_play"));
-    Sprite *startButton = Sprite::create("stop.png");
-    Sprite *activeStartButton = Sprite::create("stop.png");
+    //suspend button
+    Sprite *startButton = Sprite::create("suspend.png");
+    Sprite *activeStartButton = Sprite::create("suspend.png");
     activeStartButton->setPositionY(5);
     auto menuItem  = MenuItemSprite::create(startButton, activeStartButton, NULL, CC_CALLBACK_1(NormalModeScene::suspendCallBack, this));
     menuItem->setPosition(120, visibleSize.height / 2);
@@ -336,6 +335,8 @@ int NormalModeScene::getYPosFromArray(Point touchPoint, Size size) {
 
 
 void NormalModeScene::suspendCallBack(Object *sender) {
-   middleLayer = LayerColor::create(Color4B(255, 255, 255, 120));
-   normalModeLayer->addChild(middleLayer);
+    auto *suspendLayer = PopupLayer::create();
+    this->addChild(suspendLayer);
+//   middleLayer = LayerColor::create(Color4B(255, 255, 255, 120));
+//   normalModeLayer->addChild(middleLayer);
 }

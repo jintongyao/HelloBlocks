@@ -8,4 +8,4 @@
 
 #include "Settings.h" 
 
-theme userTheme = BLUE;
+theme userTheme = DARK;
