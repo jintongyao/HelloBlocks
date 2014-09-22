@@ -10,15 +10,10 @@
 #include "Settings.h"
 #include "BlockSprite.h"
 #include "WelcomeScene.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 
-const int VERTICAL_BLOCK_NUM = 12;
-const int HORIZONTAL_BLOCK_NUM = 4;
-const int COLOR_NUM = 4;
-const int INITED_BLOCK_HEIGHT = 4;
-
-extern theme userTheme;
 class ArcadeScene : public Scene {
 public:
     ArcadeScene();

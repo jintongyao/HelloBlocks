@@ -70,7 +70,7 @@ bool ArcadeScene::init() {
     arcadeLayer->addChild(frontLayer);
     
     //play background music
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("solo.wav", true);
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("dream-as-memory.mp3", true);
     
     //create blocks
     srand((unsigned)time(NULL));//add random seed
