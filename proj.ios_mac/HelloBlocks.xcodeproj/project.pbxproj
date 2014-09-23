@@ -67,6 +67,12 @@
 		CF3BC75F19ADA1AC00E84A46 /* BlockSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3BC75D19ADA1AC00E84A46 /* BlockSprite.cpp */; };
 		CFB40DB819B0B46800A18FA2 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB40DB719B0B46800A18FA2 /* LoadingScene.cpp */; };
 		CFB40DB919B0B46800A18FA2 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB40DB719B0B46800A18FA2 /* LoadingScene.cpp */; };
+		CFB5042E19D121F7007D969E /* NormalModeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042919D121F7007D969E /* NormalModeScene.cpp */; };
+		CFB5042F19D121F7007D969E /* NormalModeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042919D121F7007D969E /* NormalModeScene.cpp */; };
+		CFB5043019D121F7007D969E /* PopupLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042B19D121F7007D969E /* PopupLayer.cpp */; };
+		CFB5043119D121F7007D969E /* PopupLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042B19D121F7007D969E /* PopupLayer.cpp */; };
+		CFB5043219D121F7007D969E /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042D19D121F7007D969E /* Settings.cpp */; };
+		CFB5043319D121F7007D969E /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5042D19D121F7007D969E /* Settings.cpp */; };
 		CFE5985319B17815001CD1DF /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985019B17815001CD1DF /* atlas.png */; };
 		CFE5985419B17815001CD1DF /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985019B17815001CD1DF /* atlas.png */; };
 		CFE5985519B17815001CD1DF /* atlas.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985119B17815001CD1DF /* atlas.txt */; };
@@ -282,6 +288,11 @@
 		CF3BC75D19ADA1AC00E84A46 /* BlockSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockSprite.cpp; path = ../proj.ios_mac/BlockSprite.cpp; sourceTree = "<group>"; };
 		CFB40DB619B0B08600A18FA2 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = ../Classes/LoadingScene.h; sourceTree = "<group>"; };
 		CFB40DB719B0B46800A18FA2 /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = ../Classes/LoadingScene.cpp; sourceTree = "<group>"; };
+		CFB5042919D121F7007D969E /* NormalModeScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalModeScene.cpp; path = ../Classes/NormalModeScene.cpp; sourceTree = "<group>"; };
+		CFB5042A19D121F7007D969E /* NormalModeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalModeScene.h; path = ../Classes/NormalModeScene.h; sourceTree = "<group>"; };
+		CFB5042B19D121F7007D969E /* PopupLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopupLayer.cpp; path = ../Classes/PopupLayer.cpp; sourceTree = "<group>"; };
+		CFB5042C19D121F7007D969E /* PopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupLayer.h; path = ../Classes/PopupLayer.h; sourceTree = "<group>"; };
+		CFB5042D19D121F7007D969E /* Settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Settings.cpp; path = ../Classes/Settings.cpp; sourceTree = "<group>"; };
 		CFE5985019B17815001CD1DF /* atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = atlas.png; path = image/atlas.png; sourceTree = "<group>"; };
 		CFE5985119B17815001CD1DF /* atlas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atlas.txt; path = image/atlas.txt; sourceTree = "<group>"; };
 		CFE5985219B17815001CD1DF /* lullaby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lullaby.jpg; path = image/lullaby.jpg; sourceTree = "<group>"; };
@@ -365,6 +376,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CFB5042919D121F7007D969E /* NormalModeScene.cpp */,
+				CFB5042A19D121F7007D969E /* NormalModeScene.h */,
+				CFB5042B19D121F7007D969E /* PopupLayer.cpp */,
+				CFB5042C19D121F7007D969E /* PopupLayer.h */,
+				CFB5042D19D121F7007D969E /* Settings.cpp */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				CF3BC75119AD7B9300E84A46 /* ArcadeScene.cpp */,
@@ -713,6 +729,7 @@
 			files = (
 				CF3BC75E19ADA1AC00E84A46 /* BlockSprite.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				CFB5043219D121F7007D969E /* Settings.cpp in Sources */,
 				CFE5986019B1C5FE001CD1DF /* WelcomeLayer.cpp in Sources */,
 				CFE5986419B3701A001CD1DF /* TitleBorder.cpp in Sources */,
 				CF3BC74E19AD7B6C00E84A46 /* WelcomeScene.cpp in Sources */,
@@ -721,8 +738,10 @@
 				CFB40DB819B0B46800A18FA2 /* LoadingScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				CF34D38819B9A08B00254F40 /* MyColor.cpp in Sources */,
+				CFB5043019D121F7007D969E /* PopupLayer.cpp in Sources */,
 				CFE5985C19B1C3CC001CD1DF /* AtlasLoader.cpp in Sources */,
 				CF3BC75219AD7B9300E84A46 /* ArcadeScene.cpp in Sources */,
+				CFB5042E19D121F7007D969E /* NormalModeScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,7 +752,10 @@
 				CF3BC74F19AD7B6C00E84A46 /* WelcomeScene.cpp in Sources */,
 				CF3BC75F19ADA1AC00E84A46 /* BlockSprite.cpp in Sources */,
 				CFE5986119B1C5FE001CD1DF /* WelcomeLayer.cpp in Sources */,
+				CFB5043319D121F7007D969E /* Settings.cpp in Sources */,
 				CF3BC75319AD7B9300E84A46 /* ArcadeScene.cpp in Sources */,
+				CFB5043119D121F7007D969E /* PopupLayer.cpp in Sources */,
+				CFB5042F19D121F7007D969E /* NormalModeScene.cpp in Sources */,
 				CFB40DB919B0B46800A18FA2 /* LoadingScene.cpp in Sources */,
 				CFE5985D19B1C3CC001CD1DF /* AtlasLoader.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
