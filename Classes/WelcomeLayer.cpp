@@ -55,20 +55,7 @@ bool WelcomeLayer::init() {
     //vec2 points[] = {vec2(visiablesize.width / 4, visiablesize.height / 12 * 9), vec2(visiablesize.width / 4 * 3, visiablesize.height / 12 * 9), vec2(visiablesize.width / 4 * 3, visiablesize.height / 12 * 8), vec2(visiablesize.width / 4, visiablesize.height / 12 * 8)};
     //draw->drawpolygon(points, sizeof(points)/sizeof(points[0]), color4f(0,0,0,0), 1.5, color4f::gray);
     
-//    //set title
-//    auto *titleBorder = TitleBorder::create();
-//    titleBorder->setPosition(100,100);
-//    addChild(titleBorder,5);
-    
-//    Label *helloTitle = Label::create();
-//    helloTitle->setString("Hello Block");
-//    helloTitle->setPosition(Point(titleSpriteSize.width / 2, titleSpriteSize.height / 2));
-//
-//    titleSprite->addChild(helloTitle);
-//    backgroundLayer->addChild(titleSprite);
-    
     //menus
-    //Normal Mode
     MyColor *color1 = new MyColor(userTheme, 0);
     log("%i,%i,%i",color1->getRed(), color1->getGreen(), color1->getBlue());
     LayerColor *colorBlock1 = LayerColor::create(Color4B(color1->getRed(), color1->getGreen(), color1->getBlue(), 255));
@@ -121,27 +108,6 @@ bool WelcomeLayer::init() {
     auto menu4 = Menu::create(labelItem4, NULL);
     menu4->setPosition(0, 0);
     this->addChild(menu4);
-    //LayerColor *colorBlock2 = LayerColor::create(Color4B(255, 134, 154, 255));
-    //colorBlock1->setAnchorPoint(Point(0, 0));
-    //colorBlock1->setContentSize(Size(40, 40));
-    //colorBlock1->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 + 90));
-    //this->addChild(colorBlock1);
-    //this->labelItem1 = MenuItemLabel::create(LabelTTF::create("Normal Mode", "Afonts/Marker Felt.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
-    //this->labelItem1->setAnchorPoint(Point(0, 0));
-    //this->labelItem1->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 + 90));
-    //auto menu1 = Menu::create(labelItem1, NULL);
-    //menu1->setPosition(0, 0);
-    //this->addChild(menu1);
-    
-    //Start button
-    //Sprite *startButton = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_play"));
-    //Sprite *activeStartButton = Sprite::createWithSpriteFrame(AtlasLoader::getInstance()->getSpriteFrameByName("button_play"));
-    //activeStartButton->setPositionY(5);
-    //auto menuItem  = MenuItemSprite::create(startButton, activeStartButton, NULL, CC_CALLBACK_1(WelcomeLayer::menuStartCallback, this));
-    //menuItem->setPosition(Point(origin.x + visiableSize.width/2, origin.y + visiableSize.height * 2 / 5));
-    //auto menu = Menu::create(menuItem,NULL);
-    //menu->setPosition(Point(origin.x ,origin.y));
-    //this->addChild(menu);
     
     return true;
 }

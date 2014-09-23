@@ -48,7 +48,6 @@ bool PopupLayer::init() {
     Label *suspendLabel = Label::create("suspend", "Afonts/Marker Felt.ttf", 30);
     suspendLabel->setPosition(Point(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2 + 50));
 
-    
     //add menus icons
     Sprite *homeButton = Sprite::create("home.png");
     Sprite *activeHomeButton = Sprite::create("home.png");

@@ -34,6 +34,8 @@ private:
     BlockSprite* getBlockSprite(Size size, Point touchPoint);
     BlockSprite *blocks[4][12] = {0};
     Vector<BlockSprite*> clearBlockCache;
+    int scores = 0;
+    Label *scoreLabel;
     
     int getXPosFromArray(Point touchPoint, Size size);
     int getYPosFromArray(Point touchPoint, Size size);

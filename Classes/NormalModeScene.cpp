@@ -62,10 +62,16 @@ bool NormalModeScene::init() {
     Sprite *activeStartButton = Sprite::create("suspend.png");
     activeStartButton->setPositionY(5);
     auto menuItem  = MenuItemSprite::create(startButton, activeStartButton, NULL, CC_CALLBACK_1(NormalModeScene::suspendCallBack, this));
-    menuItem->setPosition(120, visibleSize.height / 2);
+    menuItem->setPosition((visibleSize.width - 5 * line) / 2, visibleSize.height - 80);
     auto menu = Menu::create(menuItem,NULL);
     menu->setPosition(Point(0 ,0));
     normalModeLayer->addChild(menu);
+    
+    //scores
+    scoreLabel = Label::create(CCString::createWithFormat("%d",scores)->_string, "American Typewriter.ttf", 40);
+    scoreLabel->setAnchorPoint(Point(0.5, 0.5));
+    scoreLabel->setPosition((visibleSize.width - 5 * line) / 2, visibleSize.height / 2 + 100);
+    normalModeLayer->addChild(scoreLabel);
     
     //create blocks
     srand((unsigned)time(NULL));//add random seed
@@ -106,12 +112,15 @@ bool NormalModeScene::onTouchBegan(Touch *touch, Event *event) {
     if (aBlock != NULL) {
         //get and clear relative blocks
         getRelativeBlocks(aBlock);
+        int clearNum = clearBlockCache.size();
         for (Vector<BlockSprite*>::iterator iter = clearBlockCache.begin(),iterEnd = clearBlockCache.end(); iter != iterEnd; iter++) {
             BlockSprite *tmpBlock = *iter;
             removeBlock(tmpBlock);
             blocks[tmpBlock->getPosX()][tmpBlock->getPosY()] = NULL;
         }
         clearBlockCache.clear();
+        scores = scores + clearNum * 10;
+        scoreLabel->setString(CCString::createWithFormat("%d",scores)->_string);
         
         //let blocks fall
         schedule(schedule_selector(NormalModeScene::fallBlock), 1, 0, 0.4);
