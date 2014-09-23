@@ -45,7 +45,7 @@ bool PopupLayer::init() {
     menuLayer->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
     
     //add label "suspend"
-    Label *suspendLabel = Label::create("suspend", "Afonts/Marker Felt.ttf", 30);
+    auto *suspendLabel = Label::createWithTTF("suspend", "Afonts/Marker Felt.ttf", 30);
     suspendLabel->setPosition(Point(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2 + 50));
 
     //add menus icons
@@ -105,7 +105,7 @@ bool PopupLayer::init() {
  *
  *  @param sender
  */
-void PopupLayer::homeCallBack(Object *sender) {
+void PopupLayer::homeCallBack(Ref *sender) {
     auto welcomeScene = WelcomeScene::create();
     TransitionTurnOffTiles *transition = TransitionTurnOffTiles::create(1, welcomeScene);
     Director::getInstance()->replaceScene(transition);
@@ -117,7 +117,7 @@ void PopupLayer::homeCallBack(Object *sender) {
  *  resume to the game
  *  @param sender
  */
-void PopupLayer::resumeCallBack(Object *sender) {
+void PopupLayer::resumeCallBack(Ref *sender) {
     this->removeFromParentAndCleanup(true);
 }
 
@@ -125,7 +125,7 @@ void PopupLayer::resumeCallBack(Object *sender) {
  *  restart the game
  *  @param sender
  */
-void PopupLayer::restartCallBack(Object *sender) {
+void PopupLayer::restartCallBack(Ref *sender) {
     auto normalModeScene = NormalModeScene::create();
     TransitionSplitRows *transition = TransitionSplitRows::create(1, normalModeScene);
     Director::getInstance()->replaceScene(transition);

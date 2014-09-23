@@ -113,7 +113,7 @@ bool WelcomeLayer::init() {
 }
 
 
-void WelcomeLayer::menuNormalModeCallback(Object *sender) {
+void WelcomeLayer::menuNormalModeCallback(Ref *sender) {
     this->labelItem1->runAction(ScaleTo::create(1.1, 1.1));
     auto scene = NormalModeScene::create();
     TransitionTurnOffTiles *transition = TransitionTurnOffTiles::create(1, scene);

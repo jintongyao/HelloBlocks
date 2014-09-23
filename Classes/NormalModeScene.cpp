@@ -58,17 +58,27 @@ bool NormalModeScene::init() {
     normalModeLayer->addChild(frontLayer);
     
     //suspend button
-    Sprite *startButton = Sprite::create("suspend.png");
-    Sprite *activeStartButton = Sprite::create("suspend.png");
-    activeStartButton->setPositionY(5);
-    auto menuItem  = MenuItemSprite::create(startButton, activeStartButton, NULL, CC_CALLBACK_1(NormalModeScene::suspendCallBack, this));
-    menuItem->setPosition((visibleSize.width - 5 * line) / 2, visibleSize.height - 80);
-    auto menu = Menu::create(menuItem,NULL);
-    menu->setPosition(Point(0 ,0));
-    normalModeLayer->addChild(menu);
+    Sprite *suspendButton = Sprite::create("suspend.png");
+    Sprite *activeSuspendButton = Sprite::create("suspend.png");
+    activeSuspendButton->setPositionY(5);
+    auto suspendMenuItem  = MenuItemSprite::create(suspendButton, activeSuspendButton, NULL, CC_CALLBACK_1(NormalModeScene::suspendCallBack, this));
+    suspendMenuItem->setPosition((visibleSize.width - 5 * line) / 2 - 50, visibleSize.height - 150);
+    auto suspendMenu = Menu::create(suspendMenuItem,NULL);
+    suspendMenu->setPosition(Point(0 ,0));
+    normalModeLayer->addChild(suspendMenu);
+    
+    //music button
+    Sprite *musicButton = Sprite::create("musicon.png");
+    Sprite *activeMusicButton = Sprite::create("musicon.png");
+    activeMusicButton->setPositionY(5);
+    auto musicMenuItem  = MenuItemSprite::create(musicButton, activeMusicButton, NULL, CC_CALLBACK_1(NormalModeScene::suspendCallBack, this));
+    musicMenuItem->setPosition((visibleSize.width - 5 * line) / 2 + 50, visibleSize.height - 150);
+    auto musicMenu = Menu::create(musicMenuItem,NULL);
+    musicMenu->setPosition(Point(0 ,0));
+    normalModeLayer->addChild(musicMenu);
     
     //scores
-    scoreLabel = Label::create(CCString::createWithFormat("%d",scores)->_string, "American Typewriter.ttf", 40);
+    scoreLabel = Label::createWithTTF(CCString::createWithFormat("%d",scores)->_string, "American Typewriter.ttf", 40);
     scoreLabel->setAnchorPoint(Point(0.5, 0.5));
     scoreLabel->setPosition((visibleSize.width - 5 * line) / 2, visibleSize.height / 2 + 100);
     normalModeLayer->addChild(scoreLabel);
@@ -343,9 +353,7 @@ int NormalModeScene::getYPosFromArray(Point touchPoint, Size size) {
 }
 
 
-void NormalModeScene::suspendCallBack(Object *sender) {
+void NormalModeScene::suspendCallBack(Ref *sender) {
     auto *suspendLayer = PopupLayer::create();
     this->addChild(suspendLayer);
-//   middleLayer = LayerColor::create(Color4B(255, 255, 255, 120));
-//   normalModeLayer->addChild(middleLayer);
 }

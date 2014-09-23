@@ -25,7 +25,7 @@ public:
     LayerColor *backgroundLayer;
     
 private:
-    void menuNormalModeCallback(Object *sender);
+    void menuNormalModeCallback(Ref *sender);
     LayerColor *colorBlock1;
     MenuItemLabel *labelItem1;
     LayerColor *colorBlock2;

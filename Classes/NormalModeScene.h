@@ -48,5 +48,5 @@ private:
     BlockSprite* checkHasBlocksAbove(int x, int y);
     void upBlock(float dt);
 
-    void suspendCallBack(Object *sender);
+    void suspendCallBack(Ref *sender);
 };

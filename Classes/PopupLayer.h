@@ -24,7 +24,7 @@ public:
     
 private:
     LayerColor *menuLayer;
-    void homeCallBack(Object *sender);
-    void resumeCallBack(Object *sender);
-    void restartCallBack(Object *sender);
+    void homeCallBack(Ref *sender);
+    void resumeCallBack(Ref *sender);
+    void restartCallBack(Ref *sender);
 };
