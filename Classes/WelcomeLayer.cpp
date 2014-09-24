@@ -63,7 +63,7 @@ bool WelcomeLayer::init() {
     colorBlock1->setContentSize(Size(40, 40));
     colorBlock1->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 + 90));
     this->addChild(colorBlock1);
-    this->labelItem1 = MenuItemLabel::create(LabelTTF::create("Normal Mode", "Afonts/Marker Felt.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
+    this->labelItem1 = MenuItemLabel::create(LabelTTF::create("Normal Mode", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
     this->labelItem1->setAnchorPoint(Point(0, 0));
     this->labelItem1->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 + 90));
     auto menu1 = Menu::create(labelItem1, NULL);
@@ -76,7 +76,7 @@ bool WelcomeLayer::init() {
     colorBlock2->setContentSize(Size(40, 40));
     colorBlock2->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 + 10));
     this->addChild(colorBlock2);
-    this->labelItem2 = MenuItemLabel::create(LabelTTF::create("Aracde Mode", "Afonts/Marker Felt.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
+    this->labelItem2 = MenuItemLabel::create(LabelTTF::create("ChooseTheOne", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
     this->labelItem2->setAnchorPoint(Point(0, 0));
     this->labelItem2->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 + 10));
     auto menu2 = Menu::create(labelItem2, NULL);
@@ -89,7 +89,7 @@ bool WelcomeLayer::init() {
     colorBlock3->setContentSize(Size(40, 40));
     colorBlock3->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 - 70));
     this->addChild(colorBlock3);
-    this->labelItem3 = MenuItemLabel::create(LabelTTF::create("Settings", "Afonts/Marker Felt.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
+    this->labelItem3 = MenuItemLabel::create(LabelTTF::create("Settings", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
     this->labelItem3->setAnchorPoint(Point(0, 0));
     this->labelItem3->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 - 70));
     auto menu3 = Menu::create(labelItem3, NULL);
@@ -102,7 +102,7 @@ bool WelcomeLayer::init() {
     colorBlock4->setContentSize(Size(40, 40));
     colorBlock4->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 - 150));
     this->addChild(colorBlock4);
-    this->labelItem4 = MenuItemLabel::create(LabelTTF::create("Theme", "Afonts/Marker Felt.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
+    this->labelItem4 = MenuItemLabel::create(LabelTTF::create("Theme", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
     this->labelItem4->setAnchorPoint(Point(0, 0));
     this->labelItem4->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 - 150));
     auto menu4 = Menu::create(labelItem4, NULL);

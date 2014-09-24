@@ -45,7 +45,7 @@ bool PopupLayer::init() {
     menuLayer->setPosition(Point(visibleSize.width / 2, visibleSize.height / 2));
     
     //add label "suspend"
-    auto *suspendLabel = Label::createWithTTF("suspend", "Afonts/Marker Felt.ttf", 30);
+    auto *suspendLabel = Label::create("Suspend", "Futura.ttf", 30);
     suspendLabel->setPosition(Point(menuLayer->getContentSize().width / 2, menuLayer->getContentSize().height / 2 + 50));
 
     //add menus icons

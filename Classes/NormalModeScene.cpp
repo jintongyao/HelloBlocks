@@ -78,7 +78,7 @@ bool NormalModeScene::init() {
     normalModeLayer->addChild(musicMenu);
     
     //scores
-    scoreLabel = Label::createWithTTF(CCString::createWithFormat("%d",scores)->_string, "American Typewriter.ttf", 40);
+    scoreLabel = Label::create(CCString::createWithFormat("%d",scores)->_string, "American Typewriter.ttf", 40);
     scoreLabel->setAnchorPoint(Point(0.5, 0.5));
     scoreLabel->setPosition((visibleSize.width - 5 * line) / 2, visibleSize.height / 2 + 100);
     normalModeLayer->addChild(scoreLabel);

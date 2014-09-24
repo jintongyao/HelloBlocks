@@ -1,6 +1,5 @@
 //  MyColor.h
 //  HelloBlocks
-//  定义色彩类,用于表示游戏中的颜色
 //  define the class in order to store colors in this game
 //  Created by JinTongyao on 9/5/14.
 //
@@ -12,7 +11,6 @@ using namespace std;
 using namespace cocos2d;
 
 /**
- * 定义存储主题的数据结构
  * define the enum struct for the theme
  **/
 typedef enum {

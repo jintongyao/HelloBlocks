@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-class NormalModeScene: public Scene {
+class NormalModeScene : public Scene {
 public:
     NormalModeScene();
     ~NormalModeScene();
