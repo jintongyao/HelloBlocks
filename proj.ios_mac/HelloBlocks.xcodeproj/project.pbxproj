@@ -85,10 +85,10 @@
 		CFB5044719D15445007D969E /* suspend.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB5043B19D15445007D969E /* suspend.png */; };
 		CFB5045319D2C2DF007D969E /* BlockSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045019D2C2DF007D969E /* BlockSprite.cpp */; };
 		CFB5045419D2C2DF007D969E /* BlockSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045019D2C2DF007D969E /* BlockSprite.cpp */; };
-		CFB5045819D2C313007D969E /* CTOScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045719D2C313007D969E /* CTOScene.cpp */; };
-		CFB5045919D2C313007D969E /* CTOScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045719D2C313007D969E /* CTOScene.cpp */; };
-		CFB5045C19D2C484007D969E /* CTOLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045B19D2C484007D969E /* CTOLayer.cpp */; };
-		CFB5045D19D2C484007D969E /* CTOLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045B19D2C484007D969E /* CTOLayer.cpp */; };
+		CFB5045F19D31146007D969E /* GetTheOneLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045E19D31146007D969E /* GetTheOneLayer.cpp */; };
+		CFB5046019D31146007D969E /* GetTheOneLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5045E19D31146007D969E /* GetTheOneLayer.cpp */; };
+		CFB5046219D31155007D969E /* GetTheOneScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5046119D31155007D969E /* GetTheOneScene.cpp */; };
+		CFB5046319D31155007D969E /* GetTheOneScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB5046119D31155007D969E /* GetTheOneScene.cpp */; };
 		CFE5985319B17815001CD1DF /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985019B17815001CD1DF /* atlas.png */; };
 		CFE5985419B17815001CD1DF /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985019B17815001CD1DF /* atlas.png */; };
 		CFE5985519B17815001CD1DF /* atlas.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFE5985119B17815001CD1DF /* atlas.txt */; };
@@ -313,10 +313,10 @@
 		CFB5043A19D15445007D969E /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start.png; path = image/start.png; sourceTree = "<group>"; };
 		CFB5043B19D15445007D969E /* suspend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = suspend.png; path = image/suspend.png; sourceTree = "<group>"; };
 		CFB5045019D2C2DF007D969E /* BlockSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockSprite.cpp; path = ../Classes/BlockSprite.cpp; sourceTree = "<group>"; };
-		CFB5045219D2C2DF007D969E /* CTOScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOScene.h; path = ../Classes/CTOScene.h; sourceTree = "<group>"; };
-		CFB5045719D2C313007D969E /* CTOScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CTOScene.cpp; path = ../Classes/CTOScene.cpp; sourceTree = "<group>"; };
-		CFB5045A19D2C471007D969E /* CTOLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOLayer.h; path = ../Classes/CTOLayer.h; sourceTree = "<group>"; };
-		CFB5045B19D2C484007D969E /* CTOLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CTOLayer.cpp; path = ../Classes/CTOLayer.cpp; sourceTree = "<group>"; };
+		CFB5045E19D31146007D969E /* GetTheOneLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetTheOneLayer.cpp; path = ../Classes/GetTheOneLayer.cpp; sourceTree = "<group>"; };
+		CFB5046119D31155007D969E /* GetTheOneScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetTheOneScene.cpp; path = ../Classes/GetTheOneScene.cpp; sourceTree = "<group>"; };
+		CFB5046519D31178007D969E /* GetTheOneScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTheOneScene.h; path = ../Classes/GetTheOneScene.h; sourceTree = "<group>"; };
+		CFB5046619D31186007D969E /* GetTheOneLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTheOneLayer.h; path = ../Classes/GetTheOneLayer.h; sourceTree = "<group>"; };
 		CFE5985019B17815001CD1DF /* atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = atlas.png; path = image/atlas.png; sourceTree = "<group>"; };
 		CFE5985119B17815001CD1DF /* atlas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atlas.txt; path = image/atlas.txt; sourceTree = "<group>"; };
 		CFE5985219B17815001CD1DF /* lullaby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lullaby.jpg; path = image/lullaby.jpg; sourceTree = "<group>"; };
@@ -406,10 +406,10 @@
 				CFE5985B19B1C3CC001CD1DF /* AtlasLoader.h */,
 				CFB5045019D2C2DF007D969E /* BlockSprite.cpp */,
 				CF3BC75C19ADA19000E84A46 /* BlockSprite.h */,
-				CFB5045B19D2C484007D969E /* CTOLayer.cpp */,
-				CFB5045A19D2C471007D969E /* CTOLayer.h */,
-				CFB5045719D2C313007D969E /* CTOScene.cpp */,
-				CFB5045219D2C2DF007D969E /* CTOScene.h */,
+				CFB5045E19D31146007D969E /* GetTheOneLayer.cpp */,
+				CFB5046119D31155007D969E /* GetTheOneScene.cpp */,
+				CFB5046519D31178007D969E /* GetTheOneScene.h */,
+				CFB5046619D31186007D969E /* GetTheOneLayer.h */,
 				CFB40DB719B0B46800A18FA2 /* LoadingScene.cpp */,
 				CFB40DB619B0B08600A18FA2 /* LoadingScene.h */,
 				CF34D38719B9A08B00254F40 /* MyColor.cpp */,
@@ -769,7 +769,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFB5045C19D2C484007D969E /* CTOLayer.cpp in Sources */,
 				CFB5045319D2C2DF007D969E /* BlockSprite.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				CFB5043219D121F7007D969E /* Settings.cpp in Sources */,
@@ -777,9 +776,10 @@
 				CF3BC74E19AD7B6C00E84A46 /* WelcomeScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				CFB5046219D31155007D969E /* GetTheOneScene.cpp in Sources */,
 				CFB40DB819B0B46800A18FA2 /* LoadingScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				CFB5045819D2C313007D969E /* CTOScene.cpp in Sources */,
+				CFB5045F19D31146007D969E /* GetTheOneLayer.cpp in Sources */,
 				CF34D38819B9A08B00254F40 /* MyColor.cpp in Sources */,
 				CFB5043019D121F7007D969E /* PopupLayer.cpp in Sources */,
 				CFE5985C19B1C3CC001CD1DF /* AtlasLoader.cpp in Sources */,
@@ -796,16 +796,16 @@
 				CFE5986119B1C5FE001CD1DF /* WelcomeLayer.cpp in Sources */,
 				CFB5045419D2C2DF007D969E /* BlockSprite.cpp in Sources */,
 				CFB5043319D121F7007D969E /* Settings.cpp in Sources */,
-				CFB5045D19D2C484007D969E /* CTOLayer.cpp in Sources */,
+				CFB5046319D31155007D969E /* GetTheOneScene.cpp in Sources */,
 				CF3BC75319AD7B9300E84A46 /* ArcadeScene.cpp in Sources */,
 				CFB5043119D121F7007D969E /* PopupLayer.cpp in Sources */,
 				CFB5042F19D121F7007D969E /* NormalModeScene.cpp in Sources */,
 				CFB40DB919B0B46800A18FA2 /* LoadingScene.cpp in Sources */,
 				CFE5985D19B1C3CC001CD1DF /* AtlasLoader.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				CFB5046019D31146007D969E /* GetTheOneLayer.cpp in Sources */,
 				CF34D38919B9A08B00254F40 /* MyColor.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				CFB5045919D2C313007D969E /* CTOScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
