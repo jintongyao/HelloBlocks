@@ -44,6 +44,7 @@ private:
     int blockWidth;
     int blockHeight;
     void blockInit(int ranColor, theme colorTheme, int width, int height, int posX, int posY);
+    void blockInit(bool IsTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY);
     int ranColor;
     MyColor* blockColor;
     theme colorTheme;

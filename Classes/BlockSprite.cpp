@@ -12,6 +12,23 @@ BlockSprite::BlockSprite() {}
 
 BlockSprite::~BlockSprite() {}
 
+bool BlockSprite::init() {
+    if (!Sprite::init()) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ *  create block for normal mode
+ *  @param ranColor
+ *  @param colorTheme
+ *  @param width
+ *  @param height
+ *  @param posX
+ *  @param posY
+ *  @return BlockSprite
+ */
 BlockSprite* BlockSprite::createBlock(int ranColor, theme colorTheme, int width, int height, int posX, int posY) {
     BlockSprite *block = new BlockSprite();
     if (block && block->init()) {
@@ -23,13 +40,15 @@ BlockSprite* BlockSprite::createBlock(int ranColor, theme colorTheme, int width,
     return NULL;
 }
 
-bool BlockSprite::init() {
-    if (!Sprite::init()) {
-        return false;
-    }
-    return true;
-}
-
+/**
+ *  init process of "createBlock"(normal mode)
+ *  @param ranColor
+ *  @param colorTheme
+ *  @param width
+ *  @param height
+ *  @param posX
+ *  @param posY
+ */
 void BlockSprite::blockInit(int ranColor, theme colorTheme, int width, int height, int posX, int posY) {
     this->setColorTheme(colorTheme);
     this->setBlockColor(new MyColor(colorTheme, ranColor));
@@ -38,6 +57,26 @@ void BlockSprite::blockInit(int ranColor, theme colorTheme, int width, int heigh
     this->blockBackgroundLayer->setContentSize(Size(width, height));
     this->addChild(blockBackgroundLayer);
 }
+
+/**
+ *  init process of "createBlock"(get the one)
+ *  @param isTheOneFlag
+ *  @param ranColor
+ *  @param colorTheme
+ *  @param width
+ *  @param height
+ *  @param posX
+ *  @param posY
+ */
+void BlockSprite::blockInit(bool isTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY) {
+    this->setColorTheme(colorTheme);
+    this->setBlockColor(new MyColor(colorTheme, ranColor));
+    this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+    this->blockBackgroundLayer->setPosition(Point(posX, posY));
+    this->blockBackgroundLayer->setContentSize(Size(width, height));
+    this->addChild(blockBackgroundLayer);
+}
+
 
 int BlockSprite::getRanColor() {
     return this->ranColor;
