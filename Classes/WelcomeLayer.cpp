@@ -76,7 +76,7 @@ bool WelcomeLayer::init() {
     colorBlock2->setContentSize(Size(40, 40));
     colorBlock2->setPosition(Point(visiableSize.width / 2 - 150, visiableSize.height / 2 + 10));
     this->addChild(colorBlock2);
-    this->labelItem2 = MenuItemLabel::create(LabelTTF::create("ChooseTheOne", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuNormalModeCallback, this));
+    this->labelItem2 = MenuItemLabel::create(LabelTTF::create("Get The One", "Futura.ttf", 32), CC_CALLBACK_1(WelcomeLayer::menuGetTheOneCallback, this));
     this->labelItem2->setAnchorPoint(Point(0, 0));
     this->labelItem2->setPosition(Point(visiableSize.width / 2 - 70, visiableSize.height / 2 + 10));
     auto menu2 = Menu::create(labelItem2, NULL);
@@ -116,6 +116,13 @@ bool WelcomeLayer::init() {
 void WelcomeLayer::menuNormalModeCallback(Ref *sender) {
     this->labelItem1->runAction(ScaleTo::create(1.1, 1.1));
     auto scene = NormalModeScene::create();
+    TransitionTurnOffTiles *transition = TransitionTurnOffTiles::create(1, scene);
+    Director::getInstance()->replaceScene(transition);
+}
+
+void WelcomeLayer::menuGetTheOneCallback(Ref *sender) {
+    this->labelItem2->runAction(ScaleTo::create(1.1, 1.1));
+    auto scene = GetTheOneScene::create();
     TransitionTurnOffTiles *transition = TransitionTurnOffTiles::create(1, scene);
     Director::getInstance()->replaceScene(transition);
 }

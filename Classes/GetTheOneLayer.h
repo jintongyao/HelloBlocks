@@ -17,8 +17,13 @@
 using namespace cocos2d;
 
 class GetTheOneLayer : public Layer {
+public:
+    static GetTheOneLayer* createLayer(int matrix);
     GetTheOneLayer();
     ~GetTheOneLayer();
+    bool init();
     CREATE_FUNC(GetTheOneLayer);
-    GetTheOneLayer(int MatrixNum);
+    
+private:
+    void layerInit(int matrix);
 };

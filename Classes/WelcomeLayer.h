@@ -12,6 +12,7 @@
 #include "ArcadeScene.h"
 #include "SimpleAudioEngine.h"
 #include "Settings.h"
+#include "GetTheOneScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -26,6 +27,7 @@ public:
     
 private:
     void menuNormalModeCallback(Ref *sender);
+    void menuGetTheOneCallback(Ref *sender);
     LayerColor *colorBlock1;
     MenuItemLabel *labelItem1;
     LayerColor *colorBlock2;

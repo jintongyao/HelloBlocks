@@ -41,6 +41,28 @@ BlockSprite* BlockSprite::createBlock(int ranColor, theme colorTheme, int width,
 }
 
 /**
+ *  create block for GetTheOne
+ *  @param isTheOneFlag
+ *  @param ranColor
+ *  @param colorTheme
+ *  @param width
+ *  @param height
+ *  @param posX
+ *  @param posY
+ *  @return BlockSprite
+ */
+BlockSprite* BlockSprite::createBlock(bool isTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY) {
+    BlockSprite *block = new BlockSprite();
+    if (block && block->init()) {
+        block->autorelease();
+        block->blockInit(isTheOneFlag, ranColor, colorTheme, width, height, posX, posY);
+        return block;
+    }
+    CC_SAFE_DELETE(block);
+    return NULL;
+}
+
+/**
  *  init process of "createBlock"(normal mode)
  *  @param ranColor
  *  @param colorTheme
@@ -71,7 +93,35 @@ void BlockSprite::blockInit(int ranColor, theme colorTheme, int width, int heigh
 void BlockSprite::blockInit(bool isTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY) {
     this->setColorTheme(colorTheme);
     this->setBlockColor(new MyColor(colorTheme, ranColor));
-    this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+    //the special block : change the color
+    if(isTheOneFlag) {
+        int randomInt = rand() % 6;
+        switch (randomInt) {
+            case 1:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed() + 15, this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+                break;
+            case 2:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen() + 15, this->getBlockColor()->getBlue(), 255));
+                break;
+            case 3:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue() + 15, 255));
+                break;
+            case 4:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed() - 15, this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+                break;
+            case 5:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen() - 15, this->getBlockColor()->getBlue(), 255));
+                break;
+            case 6:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue() - 15, 255));
+                break;
+            default:
+                this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed() + 15, this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+                break;
+        }
+    }else {
+        this->blockBackgroundLayer = LayerColor::create(Color4B(this->getBlockColor()->getRed(), this->getBlockColor()->getGreen(), this->getBlockColor()->getBlue(), 255));
+    }
     this->blockBackgroundLayer->setPosition(Point(posX, posY));
     this->blockBackgroundLayer->setContentSize(Size(width, height));
     this->addChild(blockBackgroundLayer);

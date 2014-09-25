@@ -111,7 +111,7 @@ bool NormalModeScene::init() {
  *
  *  @param touch
  *  @param event
- *  @return         normalModeScene
+ *  @return normalModeScene
  */
 bool NormalModeScene::onTouchBegan(Touch *touch, Event *event) {
     //get touched block
@@ -351,7 +351,6 @@ int NormalModeScene::getXPosFromArray(Point touchPoint, Size size) {
 int NormalModeScene::getYPosFromArray(Point touchPoint, Size size) {
     return (int)(touchPoint.y / (size.height / VERTICAL_BLOCK_NUM));
 }
-
 
 void NormalModeScene::suspendCallBack(Ref *sender) {
     auto *suspendLayer = PopupLayer::create();
