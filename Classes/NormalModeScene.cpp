@@ -107,7 +107,7 @@ bool NormalModeScene::init() {
 }
 
 /**
- *  when touch began,execute these methods
+ *  when touch began,execute this methods
  *
  *  @param touch
  *  @param event
@@ -265,7 +265,6 @@ void NormalModeScene::fallBlock(float dt) {
 
 /**
  *  rise the blocks
- *
  *  @param dt
  */
 void NormalModeScene::upBlock(float dt) {
@@ -275,7 +274,8 @@ void NormalModeScene::upBlock(float dt) {
     //is game over
     for (int i = 0; i < HORIZONTAL_BLOCK_NUM; i++) {
         if (blocks[i][VERTICAL_BLOCK_NUM - 1] != NULL) {
-            back2Welcome();
+            auto *gameoverLayer = PopupLayer::createGameoverLayer(2, scores);
+            this->addChild(gameoverLayer);
         }
     }
     
@@ -306,7 +306,6 @@ void NormalModeScene::upBlock(float dt) {
 
 /**
  *  check whether there are blocks above
- *
  *  @param x
  *  @param y
  *  @return the block above
@@ -353,6 +352,6 @@ int NormalModeScene::getYPosFromArray(Point touchPoint, Size size) {
 }
 
 void NormalModeScene::suspendCallBack(Ref *sender) {
-    auto *suspendLayer = PopupLayer::create();
+    auto *suspendLayer = PopupLayer::createSuspendLayer(1);
     this->addChild(suspendLayer);
 }

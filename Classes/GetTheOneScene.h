@@ -17,19 +17,23 @@
 
 using namespace cocos2d;
 
+extern int GetTheOneScore;
+
 class GetTheOneScene : public Scene {
 public:
     GetTheOneScene();
-    ~GetTheOneScene(); 
+    ~GetTheOneScene();
     bool init();
     CREATE_FUNC(GetTheOneScene);
-
+    void flowTime(float dt);
+    
 private:
-    int rank = 1;
+    Label *scoreLabel;
     int matrix = 2;
     int lastTime = 60;
     Label *lastTimeLabel;
     LayerColor *backgroundLayer;
     void suspendCallBack(Ref *sender);
-    void flowTime(float dt);
+    void refreshScore(float dt);
+
 };

@@ -12,6 +12,8 @@ GetTheOneScene::GetTheOneScene(){}
 
 GetTheOneScene::~GetTheOneScene(){}
 
+int GetTheOneScore = 1;
+
 bool GetTheOneScene::init() {
     if (!Scene::init() ) {
         return false;
@@ -62,17 +64,18 @@ bool GetTheOneScene::init() {
     musicMenu->setPosition(Point(0 ,0));
     backgroundLayer->addChild(musicMenu);
     //rank label
-    Label *rankLabel = Label::create(CCString::createWithFormat("%d",rank)->_string, "American Typewriter.ttf", 50);
-    rankLabel->setAnchorPoint(Point(0.5, 0.5));
-    rankLabel->setPosition(backgroundLayer->getContentSize().width / 2, visibleSize.width + 200);
-    backgroundLayer->addChild(rankLabel);
+    scoreLabel = Label::create(CCString::createWithFormat("%d",GetTheOneScore)->_string, "American Typewriter.ttf", 50);
+    scoreLabel->setAnchorPoint(Point(0.5, 0.5));
+    scoreLabel->setPosition(backgroundLayer->getContentSize().width / 2, visibleSize.width + 200);
+    backgroundLayer->addChild(scoreLabel);
     //last time
     lastTimeLabel = Label::create(CCString::createWithFormat("%d",lastTime)->_string, "American Typewriter.ttf", 50);
     lastTimeLabel->setAnchorPoint(Point(0.5, 0.5));
     lastTimeLabel->setPosition(backgroundLayer->getContentSize().width / 2, 60);
     backgroundLayer->addChild(lastTimeLabel);
     
-    GetTheOneLayer *mainLayer = GetTheOneLayer::createLayer(matrix);
+    //main layer
+    auto mainLayer = GetTheOneLayer::createLayer(matrix);
     mainLayer->setContentSize(Size(visibleSize.width, visibleSize.width));
     mainLayer->setPosition(Point(0, 120));
     
@@ -80,15 +83,33 @@ bool GetTheOneScene::init() {
     this->addChild(mainLayer);
     
     schedule(schedule_selector(GetTheOneScene::flowTime), 1.0f, kRepeatForever, 0);
+    schedule(schedule_selector(GetTheOneScene::refreshScore), 0.3f, kRepeatForever, 0);
+    
     return true;
 }
 
 void GetTheOneScene::suspendCallBack(Ref *sender) {
-    auto *suspendLayer = PopupLayer::create();
+    auto *suspendLayer = PopupLayer::createSuspendLayer(2);
+    this->unschedule(schedule_selector(GetTheOneScene::flowTime));
     this->addChild(suspendLayer);
 }
 
 void GetTheOneScene::flowTime(float dt) {
-    lastTime = --lastTime;
-    lastTimeLabel->setString(CCString::createWithFormat("%d",lastTime)->_string);
+    if (lastTime > 0) {
+        lastTime = --lastTime;
+        lastTimeLabel->setString(CCString::createWithFormat("%d",lastTime)->_string);
+    }else if (lastTime == 0){
+        lastTime = --lastTime;
+        auto *gameoverLayer = PopupLayer::createGameoverLayer(2, GetTheOneScore);
+        this->addChild(gameoverLayer);
+    }
 }
+
+void GetTheOneScene::refreshScore(float dt) {
+    if (scoreLabel == nullptr) {
+        scoreLabel = Label::create(CCString::createWithFormat("%d",GetTheOneScore)->_string, "American Typewriter.ttf", 50);
+    }else {
+        scoreLabel->setString(CCString::createWithFormat("%d",GetTheOneScore)->_string);
+    }
+}
+

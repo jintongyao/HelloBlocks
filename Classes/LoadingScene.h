@@ -18,7 +18,7 @@ using namespace CocosDenshion;
 class LoadingScene : public Scene {
 public:
     virtual bool init();
-    void onEnter() override;//进入此场景时执行的方法
+    void onEnter() override;
     CREATE_FUNC(LoadingScene);
     
 private:

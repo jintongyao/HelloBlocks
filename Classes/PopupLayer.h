@@ -21,10 +21,16 @@ public:
     ~PopupLayer();
     virtual bool init();
     CREATE_FUNC(PopupLayer);
+    static PopupLayer* createSuspendLayer(int gameType); //1-normalMode,2-GetTheOne
+    static PopupLayer* createGameoverLayer(int gameType, int score); //1-normalMode,2-GetTheOne
     
 private:
     LayerColor *menuLayer;
     void homeCallBack(Ref *sender);
-    void resumeCallBack(Ref *sender);
-    void restartCallBack(Ref *sender);
+    void resumeGetTheOne(Ref *sender);
+    void resumeNormalMode(Ref *sender);
+    void restartGetTheOne(Ref *sender);
+    void restartNormalMode(Ref *sender);
+    bool initSuspendLayer(int gameType);
+    bool initGameoverLayer(int gameType, int score);
 };

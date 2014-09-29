@@ -23,6 +23,7 @@ public:
     ~GetTheOneLayer();
     bool init();
     CREATE_FUNC(GetTheOneLayer);
+    virtual bool onTouchBegan(Touch *touch, Event *event, int matrix, int ranX, int ranY);
     
 private:
     void layerInit(int matrix);

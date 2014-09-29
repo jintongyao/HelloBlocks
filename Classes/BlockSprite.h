@@ -16,7 +16,7 @@ using namespace std;
 class BlockSprite : public Sprite {
 public:
     static BlockSprite* createBlock(int ranColor, theme colorTheme, int width, int height, int posX, int posY);
-    static BlockSprite* createBlock(bool isTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY);
+    static BlockSprite* createBlock(bool isTheOneFlag, int red, int green, int blue, int width, int height, int posX, int posY);
     BlockSprite();
     ~BlockSprite();
     virtual bool init();
@@ -45,7 +45,7 @@ private:
     int blockWidth;
     int blockHeight;
     void blockInit(int ranColor, theme colorTheme, int width, int height, int posX, int posY);
-    void blockInit(bool IsTheOneFlag, int ranColor, theme colorTheme, int width, int height, int posX, int posY);
+    void blockInit(bool IsTheOneFlag, int red, int green, int blue, int width, int height, int posX, int posY);
     int ranColor;
     MyColor* blockColor;
     theme colorTheme;
